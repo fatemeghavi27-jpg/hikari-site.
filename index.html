@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hikari Anime — Character Gallery</title>
+<style>
+:root{--pink:#ff7eb6;--purple:#8d6cff;--deep:#4c286f;--white:#fff;--soft:#fff4fb}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,"Tahoma",sans-serif;background:linear-gradient(135deg,#fff,#fff1fa 45%,#eee8ff);color:#38234b}
+header{position:sticky;top:0;z-index:10;background:#ffffffdd;backdrop-filter:blur(12px);border-bottom:1px solid #ead9f4;padding:14px 6%}
+nav{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.logo{font-size:1.45rem;font-weight:900;color:var(--purple)}.logo span{color:var(--pink)}
+button{border:0;border-radius:999px;padding:10px 18px;background:linear-gradient(90deg,var(--pink),var(--purple));color:white;font-weight:800;cursor:pointer}
+.hero{max-width:1100px;margin:55px auto 30px;padding:0 20px;display:grid;grid-template-columns:1.05fr .95fr;gap:35px;align-items:center}
+h1{font-size:clamp(2.2rem,6vw,4.5rem);margin:0 0 15px;line-height:1.05;color:var(--deep)}
+h1 span{color:var(--pink)}.hero p{font-size:1.1rem;line-height:1.9;color:#654f72}
+.hero-art{background:linear-gradient(145deg,#ffd9ec,#ddd4ff);border-radius:34px;padding:18px;box-shadow:0 20px 55px #a77ad344}
+.hero-art img{width:100%;display:block;border-radius:25px}
+section{max-width:1100px;margin:50px auto;padding:0 20px}.section-title{text-align:center;color:var(--deep);font-size:2rem}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.card{background:#fff;border:1px solid #eadcf3;border-radius:25px;overflow:hidden;box-shadow:0 12px 30px #8d6cff16;transition:.2s}.card:hover{transform:translateY(-6px)}.card img{width:100%;aspect-ratio:1/1;object-fit:cover}.card-body{padding:18px}.card h3{margin:0 0 8px;color:var(--purple)}.card p{margin:0;color:#715d7d;line-height:1.7}
+footer{text-align:center;padding:35px;color:#806d8c}
+@media(max-width:800px){.hero{grid-template-columns:1fr;text-align:center}.grid{grid-template-columns:1fr}.hero-art{max-width:520px;margin:auto}}
+</style>
+</head>
+<body>
+<header><nav><div class="logo">Hikari <span>Anime ✦</span></div><button id="langBtn">English</button></nav></header>
+
+<main>
+<section class="hero">
+<div>
+<h1 id="title">دنیای <span>کاراکترهای انیمه</span></h1>
+<p id="intro">به گالری هیکاری خوش آمدی؛ جایی برای کشف شخصیت‌های خیالی با استایل‌های رنگارنگ و دوست‌داشتنی.</p>
+<button onclick="document.getElementById('characters').scrollIntoView({behavior:'smooth'})" id="explore">مشاهده کاراکترها</button>
+</div>
+<div class="hero-art"><img src="assets/characters.svg" alt="Three original anime-inspired characters"></div>
+</section>
+
+<section id="characters">
+<h2 class="section-title" id="galleryTitle">کاراکترها</h2>
+<div class="grid">
+<article class="card"><img src="assets/character1.svg" alt="Airi"><div class="card-body"><h3>Airi</h3><p id="p1">دختر پرانرژی با موهای صورتی و قلبی پر از رویا.</p></div></article>
+<article class="card"><img src="assets/character2.svg" alt="Ren"><div class="card-body"><h3>Ren</h3><p id="p2">شخصیتی آرام و مرموز با استایلی بنفش و تیره.</p></div></article>
+<article class="card"><img src="assets/character3.svg" alt="Yuna"><div class="card-body"><h3>Yuna</h3><p id="p3">دختری شجاع و بااعتمادبه‌نفس با موهای نقره‌ای.</p></div></article>
+</div>
+</section>
+</main>
+<footer id="footer">ساخته شده با ♡ برای دوستداران انیمه</footer>
+
+<script>
+let fa=true;
+const data={
+fa:{dir:"rtl",btn:"English",title:'دنیای <span>کاراکترهای انیمه</span>',intro:"به گالری هیکاری خوش آمدی؛ جایی برای کشف شخصیت‌های خیالی با استایل‌های رنگارنگ و دوست‌داشتنی.",explore:"مشاهده کاراکترها",gallery:"کاراکترها",p1:"دختر پرانرژی با موهای صورتی و قلبی پر از رویا.",p2:"شخصیتی آرام و مرموز با استایلی بنفش و تیره.",p3:"دختری شجاع و بااعتمادبه‌نفس با موهای نقره‌ای.",footer:"ساخته شده با ♡ برای دوستداران انیمه"},
+en:{dir:"ltr",btn:"فارسی",title:'The World of <span>Anime Characters</span>',intro:"Welcome to Hikari’s gallery — a colorful place to discover original fictional characters.",explore:"Explore Characters",gallery:"Characters",p1:"An energetic girl with pink hair and a heart full of dreams.",p2:"A calm and mysterious character with a dark violet style.",p3:"A brave and confident girl with silver hair.",footer:"Made with ♡ for anime lovers"}};
+document.getElementById("langBtn").onclick=()=>{
+ fa=!fa; let d=fa?data.fa:data.en; document.documentElement.lang=fa?"fa":"en";document.documentElement.dir=d.dir;
+ for(const [id,key] of Object.entries({langBtn:"btn",title:"title",intro:"intro",explore:"explore",galleryTitle:"gallery",p1:"p1",p2:"p2",p3:"p3",footer:"footer"}))document.getElementById(id).innerHTML=d[key];
+};
+</script>
+</body></html>
